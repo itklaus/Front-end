@@ -1,0 +1,20 @@
+@require 'product/*'
+
+// base
+*
+  margin: 0px
+  padding: 0px
+  box-sizing: border-box
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+body
+  font: $font-size/1.45 $font
+  min-height: 320px
+
+@require 'media'
