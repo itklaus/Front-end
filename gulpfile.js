@@ -21,10 +21,11 @@ gulp.task('serve', ['stylus', 'jade', 'js', 'imgmin'], function() {
 	});
 
 	gulp.watch("src/styl/**/*.styl", ['stylus']);
+	gulp.watch("src/styl/**/*.css", ['stylus']);
 	gulp.watch("src/img/**/*", ['imgmin']);
 	gulp.watch("src/js/**/*.js", ['js']);
-    gulp.watch("src/*.pug", ['jade']);
-    gulp.watch("dist/*.html").on('change', browserSync.reload);
+  gulp.watch("src/*.pug", ['jade']);
+  gulp.watch("dist/*.html").on('change', browserSync.reload);
 });
 
 
