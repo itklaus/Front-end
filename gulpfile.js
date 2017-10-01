@@ -1,19 +1,19 @@
-var gulp         = require('gulp'),
-	browserSync  = require('browser-sync').create(),
-	jade         = require('gulp-pug'),
-	stylus 		 = require('gulp-stylus'),
-	autoprefixer = require('gulp-autoprefixer'),
-	cleanCSS     = require('gulp-clean-css'),
-	rename       = require('gulp-rename'),
-	notify 	     = require("gulp-notify"),
-	uglify       = require('gulp-uglify'),
-	concat  	 = require('gulp-concat'),
-	cache        = require('gulp-cache'),
-	imagemin     = require('gulp-imagemin');
+let gulp           = require('gulp'),
+  	browserSync    = require('browser-sync').create(),
+  	jade           = require('gulp-pug'),
+  	stylus 		     = require('gulp-stylus'),
+  	autoprefixer   = require('gulp-autoprefixer'),
+  	cleanCSS       = require('gulp-clean-css'),
+  	rename         = require('gulp-rename'),
+  	notify 	       = require("gulp-notify"),
+  	uglify         = require('gulp-uglify'),
+  	concat  	     = require('gulp-concat'),
+  	cache          = require('gulp-cache'),
+  	imagemin       = require('gulp-imagemin');
 
 gulp.task('serve', ['stylus', 'jade', 'js', 'imgmin'], function() {
 
-    browserSync.init({
+  browserSync.init({
 		server: {
 			baseDir: 'dist'
 		},
@@ -40,17 +40,17 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('jade', function () {
-    gulp.src('src/*.pug')
-        .pipe(jade({
-            pretty: true
-        }))
-        .pipe(gulp.dest('dist/'));
+  gulp.src('src/*.pug')
+  .pipe(jade({
+    pretty: true
+  }))
+  .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('master-js', function() {
 	return gulp.src([
 		'src/js/master.js',
-		])
+	])
 	.pipe(concat('master.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('src/js'));
@@ -60,7 +60,7 @@ gulp.task('js', ['master-js'], function() {
 	return gulp.src([
 		'src/libs/jquery/dist/jquery.min.js',
 		'src/js/master.min.js',
-		])
+	])
 	.pipe(concat('master.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'))
